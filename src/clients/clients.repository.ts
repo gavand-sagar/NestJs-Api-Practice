@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { IClientsService } from './clients.interface';
+import { IClientsRepo } from './clients.interface';
 import { MongoClient } from 'mongodb';
 
 @Injectable()
-export class clientRepository implements IClientsService {
+export class clientRepository implements IClientsRepo {
   async getdb() {
     const client = new MongoClient('mongodb://localhost:27017/');
     const connecction = await client.connect();

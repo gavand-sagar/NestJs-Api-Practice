@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { clientRepository } from './clients.repository';
+import { Inject, Injectable } from '@nestjs/common';
 import { client } from './client';
+import { IClientsRepo } from './clients.interface';
 
 @Injectable()
 export class ClientsService {
-  constructor(private readonly db: clientRepository) {}
+  constructor(@Inject('IClientsRepo') private readonly db: IClientsRepo) {}
 
   async getAllClients(): Promise<any> {
     return await this.db.getClients();
